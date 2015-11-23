@@ -9,11 +9,12 @@ version = '1.0'
  
 // global version control variable #{version.~}
 def version = [
-spring: '4.1.6.RELEASE',
+spring: '4.2.2.RELEASE',
 servletAPI: '3.1.0',
 commonsCollections: '3.2.1',
 junit: '4.12',
-slf4j: '1.7.12'
+slf4j: '1.7.12',
+jstl: '1.2'
 ]
  
 eclipse {
@@ -34,6 +35,7 @@ jar {
 }
  
 repositories {
+	mavenLocal()
     mavenCentral()
 }
  
@@ -43,7 +45,10 @@ dependencies {
     compile "org.springframework:spring-webmvc:${version.spring}"
      
     compile "org.slf4j:slf4j-api:${version.slf4j}"
+  
     compile group: 'commons-collections', name: 'commons-collections', version: "${version.commonsCollections}"
+    
+    compile "javax.servlet:jstl:${version.jstl}"
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
 }
  
