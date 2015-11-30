@@ -1,4 +1,7 @@
-package org.gradle.mvc.config;
+/**
+ * create by Yewon Kim
+ * **/
+package gradlemvc.pingpop.config;
 
 import javax.servlet.Filter;
 
