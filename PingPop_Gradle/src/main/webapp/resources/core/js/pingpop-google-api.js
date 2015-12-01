@@ -5,7 +5,7 @@ var outh2;
 function signOut() {
     auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-     // console.log('User signed out.');
+
       $.ajax({
     	  type : 'POST',
     	  url : 'logout',
@@ -21,14 +21,7 @@ function signOut() {
 function onSuccess(googleUser) {
       console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
       location.reload();
-      /*$.post("login", {
-	        userId: googleUser.getBasicProfile().getId(),
-	        userName: googleUser.getBasicProfile().getName(),
-	        email: googleUser.getBasicProfile().getEmail()
-	    },
-	    function(data, status){
-	        console.log("saved user session login info");
-	    });*/
+
       $.ajax({
     	  type : 'POST',
     	  url : 'login',
@@ -65,16 +58,4 @@ function onLoad() {
 			'onfailure': onFailure
 		});
 	});
-}
-
-function onLoadAgain() {
-	gapi.signin2.render('my-signin2', {
-		//'scope': 'https://www.googleapis.com/auth/plus.login',
-		'width': 100,
-		'height': 25,
-		'longtitle': false,
-		'onsuccess': onSuccess,
-		'onfailure': onFailure
-	});
-
 }

@@ -16,9 +16,9 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li><a href="#">Calendar</a></li>
-	        <li><a href="#">Friends</a></li>
-	        <li><a href="#">Pop Event</a></li>
+	        <li><a href="javascript:showPage('#CalendarPage')">Calendar</a></li>
+	        <li><a href="javascript:showPage('#FriendsPage')">Friends</a></li>
+	        <li><a href="javascript:showPage('#EventPage')">Pop Event</a></li>
 	      </ul>
 	      <ul class="nav navbar-nav navbar-right">
 		     <c:choose>
@@ -28,7 +28,6 @@
 		        <c:when test="${ not empty sessionScope.userLoginInfo }">
 		        	<li>Welcome ${ sessionScope.userLoginInfo.userName } ~~</li>
 		        	<li><a href="#" onclick="signOut();">Sign out</a></li>
-		        	<script src="https://apis.google.com/js/platform.js?onload=onLoadAgain" async defer></script>
 		        </c:when>
 	        </c:choose>
 	      </ul>
