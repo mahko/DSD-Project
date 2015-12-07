@@ -129,9 +129,7 @@ public class GoogleCalendar {
 			googleEvent.setLocation(event.getEventPlace());
 			googleEvent.setDescription(event.getEventDescription());
 			googleEvent.setStart(start);
-			googleEvent.setEnd(end);
-			
-			
+			googleEvent.setEnd(end);			
 			
 			service.events().insert("primary", googleEvent).execute();
 		} catch (IOException e) {
@@ -141,6 +139,21 @@ public class GoogleCalendar {
     }
     
     boolean checkUserAvailiability(String startTime, String endTime){
-    	service.freebusy().query(null).execute().
+    	com.google.api.services.calendar.Calendar service;
+		try {
+			service = getCalendarService();
+			
+	    	FreeBusyRequest req = new FreeBusyRequest();
+	    	req.setTimeMin(new DateTime(startTime));
+	    	req.setTimeMax(new DateTime(endTime));
+	    	
+			FreeBusyResponse response = service.freebusy().query(req).execute();
+			return response.getCalendars().get("primary").getBusy().isEmpty();
+	    	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return true;
     }
 }
